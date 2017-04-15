@@ -9,6 +9,7 @@ This is a simple solution to overcome this problem.
 
 ## AWS CloudFormation Custom Resource
 
+### Example (Custom Resource)
 ```json
 {
 	"Type": "Custom::Ipv6SubnetGenerator",
@@ -34,7 +35,7 @@ This is a simple solution to overcome this problem.
 * List of subnets (length: Count)
 
 ## Usage
-
+### Example (SubnetCidrBlock)
 ```json
 {
 	"Type": "AWS::EC2::SubnetCidrBlock",
@@ -49,4 +50,16 @@ This is a simple solution to overcome this problem.
 		}
 	}
 }
+```
+
+## Installation
+
+```shell
+pip install . /tmp/cfnipv6subnetgenerator
+zip -j /tmp/cfnipv6subnetgenerator.zip /tmp/cfnipv6subnetgenerator
+aws lambda create-function --function-name CFNIPv6SubnetGenerator \
+			   --runtime python2.7			  \
+			   --handler ipv6subnets.lambda_handler   \
+			   ...
+			   ...
 ```
