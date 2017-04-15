@@ -8,6 +8,8 @@ setup(
     author_email='pata@alface.de',
     license='BSD',
     keywords='aws cloudformation ipv6',
-    py_modules=['ipv6subnets'],
+    py_modules=[
+        'cfnresponse',
+        'ipv6subnets'],
     install_requires=["py2-ipaddress"]
 )
