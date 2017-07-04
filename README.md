@@ -52,10 +52,13 @@ This is a simple solution to overcome this problem.
 }
 ```
 
-## Installation
-
+## Installation/Usage
+1. Create the Lambda function to be used as a CloudFormation Custom Resource
 ```shell
-pip install . /tmp/cfnipv6subnetgenerator
+cd /tmp
+git clone git@github.com:mpata/cfnipv6subnetgenerator.git
+cd /tmp/cfnipv6subnetgenerator
+pip install -t . -r requirements.txt
 zip -j /tmp/cfnipv6subnetgenerator.zip /tmp/cfnipv6subnetgenerator
 aws lambda create-function --function-name CFNIPv6SubnetGenerator \
 			   --runtime python2.7			  \
@@ -63,3 +66,5 @@ aws lambda create-function --function-name CFNIPv6SubnetGenerator \
 			   ...
 			   ...
 ```
+2. In your CloudFormation template add a Custom Resource like in the example above
+3. You can now use the 'Fn::Select' intrinsic function to select a generated subnet from the CustomResource you've just created.
